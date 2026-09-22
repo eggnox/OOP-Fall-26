@@ -1,0 +1,25 @@
+@startuml
+
+class Polygon {
+    - __vertices: List[Point]
+
+    + Polygon(vertices: List[Point])
+    + vertices: List[Point]
+    + vertices(vertices: List[Point]): None
+    + vertex_count: int
+    + get_vertex(index: int): Point
+    + __len__(): int
+}
+
+class PolygonAreaCalculator {
+    - {static} __instance: Optional[PolygonAreaCalculator]
+
+    + {static} __new__(): PolygonAreaCalculator
+    + {static} get_instance(): PolygonAreaCalculator
+    + {static} shoelace_term(first: Point, second: Point): int
+    + calculate_area(polygon: Polygon): float
+}
+
+PolygonAreaCalculator ..> Polygon : calculates area of
+
+@enduml

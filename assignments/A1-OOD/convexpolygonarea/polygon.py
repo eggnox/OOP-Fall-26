@@ -11,7 +11,7 @@ class Polygon:
 
     def __init__(self, vertices: List[Point]) -> None:
         """Initialize a polygon with a list of vertices."""
-        self.__vertices: List[Point] = vertices
+        self.__vertices: List[Point] = vertices.copy()
 
     @property
     def vertices(self) -> List[Point]:
@@ -21,7 +21,7 @@ class Polygon:
     @vertices.setter
     def vertices(self, vertices: List[Point]) -> None:
         """Set the polygon's vertices."""
-        self.__vertices = vertices
+        self.__vertices = vertices.copy()
 
     @property
     def vertex_count(self) -> int:
