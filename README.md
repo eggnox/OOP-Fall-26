@@ -22,3 +22,16 @@ Object-Oriented Programming course repository.
 | Status | Complete |
 | Location | [assignments/A0-review](assignments/A0-review) |
 | Notes | Completed Python review quizzes and Docker setup. Screenshots are stored in the assignment folder. |
+
+### Assignment 1
+
+| Name | Value |
+| --- | --- |
+| Name | Classes, Objects, & Singleton Pattern |
+| Problem | Convex Polygon Area |
+| Description | Solved the Kattis Convex Polygon Area problem using object-oriented design, multiple modules/classes, and the Singleton design pattern. |
+| Status | Complete |
+| Location | [assignments/A1-OOD/convexpolygonarea](assignments/A1-OOD/convexpolygonarea) |
+| Kattis | Accepted |
+| Testing | Unit tests, whole-program tests, type checking, style checking, and coverage completed successfully. |
+| UML | Class, sequence, and Singleton interaction diagrams included in `docs/uml`. |
