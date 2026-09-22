@@ -20,7 +20,7 @@ class PolygonAreaCalculator:
 
         return instance
 
-        @classmethod
+    @classmethod
     def get_instance(cls) -> "PolygonAreaCalculator":
         """Return the singleton calculator instance."""
         return cls()
@@ -48,4 +48,3 @@ class PolygonAreaCalculator:
             area_sum += self.shoelace_term(first, second)
 
         return abs(area_sum) / 2.0
-    
