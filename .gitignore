@@ -1,0 +1,12 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Test/type-check caches
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
+
+# Coverage files
+.coverage
+htmlcov/
