@@ -1,22 +1,32 @@
 @startuml
 
 class Polygon {
+    .. Attributes ..
     - __vertices: List[Point]
 
-    + Polygon(vertices: List[Point])
+    .. Properties ..
     + vertices: List[Point]
     + vertices(vertices: List[Point]): None
     + vertex_count: int
+
+    .. Methods ..
+    + Polygon(vertices: List[Point])
     + get_vertex(index: int): Point
     + __len__(): int
 }
 
 class PolygonAreaCalculator {
+    .. Class Attributes ..
     - {static} __instance: Optional[PolygonAreaCalculator]
 
-    + {static} __new__(): PolygonAreaCalculator
+    .. Class Methods ..
     + {static} get_instance(): PolygonAreaCalculator
+
+    .. Static Methods ..
     + {static} shoelace_term(first: Point, second: Point): int
+
+    .. Instance Methods ..
+    + __new__(): PolygonAreaCalculator
     + calculate_area(polygon: Polygon): float
 }
 

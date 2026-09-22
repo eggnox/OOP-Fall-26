@@ -1,0 +1,24 @@
+@startuml
+
+actor User
+participant "convexpolygonarea.py" as Main
+participant Polygon
+participant PolygonAreaCalculator as Calculator
+
+User -> Main: provide polygon input
+Main -> Polygon: Polygon(vertices)
+Polygon --> Main: polygon object
+
+Main -> Calculator: get_instance()
+Calculator --> Main: singleton calculator
+
+Main -> Calculator: calculate_area(polygon)
+Calculator -> Polygon: get_vertex(index)
+Polygon --> Calculator: Point
+Calculator -> Polygon: get_vertex(next_index)
+Polygon --> Calculator: Point
+Calculator --> Main: area
+
+Main --> User: print area
+
+@enduml

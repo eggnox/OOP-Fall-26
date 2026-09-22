@@ -2,7 +2,7 @@ PYTHON = python3
 SOURCE_FILES = convexpolygonarea.py polygon.py area_calculator.py
 TEST_FILES = tests/*.py
 
-.PHONY: all style fix type test kattis coverage docs clean
+.PHONY: all style fix type test kattis coverage docs uml clean
 
 all: style type test kattis
 
@@ -25,7 +25,7 @@ coverage:
 	pytest --cov=. --cov-report=term-missing tests
 
 docs:
-	rm -rf docs/*
+	rm -f docs/*.html docs/search.js
 	pdoc -o docs $(SOURCE_FILES)
 	rm -f docs/.gitignore
 
@@ -36,3 +36,6 @@ clean:
 	rm -rf .mypy_cache
 	rm -rf htmlcov
 	rm -f .coverage
+
+uml:
+	plantuml docs/uml/*.puml

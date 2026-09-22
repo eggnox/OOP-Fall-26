@@ -4,29 +4,28 @@ TYPE_CHECK = mypy --strict --allow-untyped-decorators --ignore-missing-imports
 STYLE_CHECK = flake8
 COVERAGE = python -m pytest
 ASSIGNMENT = ./assignments
+A1 = $(ASSIGNMENT)/A1-OOD/convexpolygonarea
 
-.PHONY: all
-all: check-style check-type run-test clean
+.PHONY: all check-type check-style run-test coverage clean
+
+all: check-style check-type run-test
 	@echo "All checks passed"
 
-.PHONY: check-type
 check-type:
-	@echo "FIXME"
+	$(MAKE) -C $(A1) type
 
-.PHONY: check-style
 check-style:
-	@echo "FIXME"
+	$(MAKE) -C $(A1) style
 
-# discover and run all tests
-.PHONY: run-test
 run-test:
-	@echo "FIXME"
+	$(MAKE) -C $(A1) test
 
-.PHONY: clean
+coverage:
+	$(MAKE) -C $(A1) coverage
+
 clean:
-	# remove all caches recursively
-	rm -rf `find . -type d -name __pycache__` # remove all pycache
-	rm -rf `find . -type d -name .pytest_cache` # remove all pytest cache
-	rm -rf `find . -type d -name .mypy_cache` # remove all mypy cache
-	rm -rf `find . -type d -name .hypothesis` # remove all hypothesis cache
-	rm -rf `find . -name .coverage` # remove all coverage cache 
+	rm -rf `find . -type d -name __pycache__`
+	rm -rf `find . -type d -name .pytest_cache`
+	rm -rf `find . -type d -name .mypy_cache`
+	rm -rf `find . -type d -name .hypothesis`
+	rm -rf `find . -name .coverage`
