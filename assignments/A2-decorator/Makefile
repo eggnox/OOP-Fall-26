@@ -2,7 +2,7 @@
 PYTHON = python3
 PROJECT = mixedfractions
 
-.PHONY: test program-test style typecheck coverage docs
+.PHONY: test program-test style typecheck coverage docs security
 
 test:
 	cd $(PROJECT) && $(PYTHON) -m unittest discover -s tests -v
@@ -26,4 +26,8 @@ coverage:
 
 docs:
 	cd $(PROJECT) && $(PYTHON) -m pdoc -o docs/html fraction fraction_manager fraction_formatter mixedfractions
+
+
+security:
+	cd $(PROJECT) && $(PYTHON) -m bandit -q fraction.py fraction_manager.py fraction_formatter.py mixedfractions.py
 
