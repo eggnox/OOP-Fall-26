@@ -2,6 +2,7 @@
 
 from fraction import Fraction
 
+from fraction_formatter import BasicMixedFormatter, SpacedFractionDecorator
 
 class FractionManager:
     """Manage fraction operations using a single instance."""
@@ -14,11 +15,11 @@ class FractionManager:
             cls._instance = super().__new__(cls)
 
         return cls._instance
-        
+
     def convert(self, numerator: int, denominator: int) -> str:
-        """Convert an improper fraction into a mixed fraction."""
+        """Convert a fraction using the Decorator Pattern."""
         fraction = Fraction(numerator, denominator)
 
-        whole, remainder, bottom = fraction.to_mixed()
+        formatter = SpacedFractionDecorator(BasicMixedFormatter())
 
-        return f"{whole} {remainder} / {bottom}"
+        return formatter.format(fraction)
