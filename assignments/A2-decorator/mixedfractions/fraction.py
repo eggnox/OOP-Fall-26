@@ -31,14 +31,14 @@ class Fraction:
             raise ValueError("Denominator must be positive")
 
         self._denominator = value
-        
+
     def to_mixed(self) -> tuple[int, int, int]:
         """Convert a fraction into mixed-number components."""
         whole, remainder = divmod(
             self.numerator, self.denominator
         )
         return whole, remainder, self.denominator
-        
+
     def __add__(self, other: "Fraction") -> "Fraction":
         """Add two fractions together without simplifying."""
         numerator = (

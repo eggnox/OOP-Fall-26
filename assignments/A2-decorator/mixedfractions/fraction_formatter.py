@@ -22,6 +22,7 @@ class BasicMixedFormatter(FractionFormatter):
 
         return f"{whole} {remainder}/{bottom}"
 
+
 class SpacedFractionDecorator(FractionFormatter):
     """Decorator that adds spaces around the fraction slash."""
 

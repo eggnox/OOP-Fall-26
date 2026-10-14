@@ -4,6 +4,7 @@ from fraction import Fraction
 
 from fraction_formatter import BasicMixedFormatter, SpacedFractionDecorator
 
+
 class FractionManager:
     """Manage fraction operations using a single instance."""
 

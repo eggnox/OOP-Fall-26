@@ -5,6 +5,7 @@ import unittest
 from fraction import Fraction
 from fraction_formatter import BasicMixedFormatter, SpacedFractionDecorator
 
+
 class TestBasicMixedFormatter(unittest.TestCase):
     """Test formatting fractions without extra spacing."""
 
@@ -28,6 +29,7 @@ class TestBasicMixedFormatter(unittest.TestCase):
         fraction = Fraction(10, 2)
 
         self.assertEqual(formatter.format(fraction), "5 0/2")
+
 
 class TestSpacedFractionDecorator(unittest.TestCase):
     """Test the fraction formatting decorator."""
