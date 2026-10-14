@@ -1,0 +1,28 @@
+
+@startuml
+title Mixed Fractions - Activity Diagram
+
+start
+
+:Create FractionManager;
+:Read numerator and denominator;
+
+while (Both numbers are not zero?) is (Yes)
+
+    :Create Fraction object;
+
+    :Calculate whole number and remainder;
+
+    :Format fraction with BasicMixedFormatter;
+
+    :Apply SpacedFractionDecorator;
+
+    :Print mixed fraction;
+
+    :Read next numerator and denominator;
+
+endwhile (No)
+
+stop
+
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+title Mixed Fractions - Class Diagram
+
+class Fraction {
+    -_numerator: int
+    -_denominator: int
+    --
+    +__init__(numerator, denominator)
+    +numerator: int
+    +denominator: int
+    +to_mixed(): tuple
+    +__add__(other): Fraction
+}
+
+class FractionManager <<Singleton>> {
+    -_instance: FractionManager
+    --
+    +__new__(): FractionManager
+    +convert(numerator, denominator): str
+}
+
+abstract class FractionFormatter {
+    +format(fraction): str
+}
+
+class BasicMixedFormatter {
+    +format(fraction): str
+}
+
+class SpacedFractionDecorator {
+    -_formatter: FractionFormatter
+    --
+    +__init__(formatter)
+    +format(fraction): str
+}
+
+BasicMixedFormatter --|> FractionFormatter
+SpacedFractionDecorator --|> FractionFormatter
+
+FractionManager ..> Fraction : creates
+FractionManager ..> BasicMixedFormatter : creates
+FractionManager ..> SpacedFractionDecorator : uses
+SpacedFractionDecorator --> FractionFormatter : wraps
+FractionFormatter ..> Fraction : formats
+
+@enduml

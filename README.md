@@ -35,3 +35,18 @@ Object-Oriented Programming course repository.
 | Kattis | Accepted |
 | Testing | Unit tests, whole-program tests, type checking, style checking, and coverage completed successfully. |
 | UML | Class, sequence, and Singleton interaction diagrams included in `docs/uml`. |
+
+
+### Assignment 2
+
+| Name | Value |
+| --- | --- |
+| Name | Exceptions, Operator Overloading, & Decorator Pattern |
+| Problem | Mixed Fractions |
+| Description | Solved the Kattis Mixed Fractions problem using object-oriented design, exception handling, operator overloading, the Singleton pattern, and the Decorator pattern. |
+| Status | Complete |
+| Location | [assignments/A2-decorator/mixedfractions](assignments/A2-decorator/mixedfractions) |
+| Kattis | Accepted |
+| Testing | 24 unit tests passed, 4 local Kattis tests passed, and 100% code coverage achieved. |
+| Quality | Flake8, Mypy, Bandit, and GitHub Actions checks passed. |
+| UML | Class, sequence, and activity diagrams included in `docs/uml`. |

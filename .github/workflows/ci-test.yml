@@ -43,3 +43,16 @@ jobs:
 
       - name: Run coverage
         run: make coverage
+
+      - name: Check Assignment 2 style
+        run: make a2-style
+
+      - name: Check Assignment 2 types
+        run: make a2-typecheck
+
+      - name: Run Assignment 2 unit tests
+        run: make a2-test
+
+      - name: Check Assignment 2 coverage
+        run: make a2-coverage
+

@@ -1,0 +1,36 @@
+
+@startuml
+title Mixed Fractions - Sequence Diagram
+
+actor User
+participant "mixedfractions.py" as Main
+participant FractionManager as Manager
+participant Fraction
+participant SpacedFractionDecorator as Decorator
+participant BasicMixedFormatter as Basic
+
+User -> Main : Input 27 12
+Main -> Manager : convert(27, 12)
+
+Manager -> Fraction : Fraction(27, 12)
+Fraction --> Manager : fraction object
+
+Manager -> Basic : BasicMixedFormatter()
+Basic --> Manager : basic formatter
+
+Manager -> Decorator : SpacedFractionDecorator(basic)
+Decorator --> Manager : decorated formatter
+
+Manager -> Decorator : format(fraction)
+Decorator -> Basic : format(fraction)
+
+Basic -> Fraction : to_mixed()
+Fraction --> Basic : (2, 3, 12)
+
+Basic --> Decorator : "2 3/12"
+Decorator --> Manager : "2 3 / 12"
+
+Manager --> Main : "2 3 / 12"
+Main --> User : Display 2 3 / 12
+
+@enduml
