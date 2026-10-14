@@ -3,6 +3,7 @@
 import unittest
 
 from fraction import Fraction
+from hypothesis import given, strategies as st
 
 
 class TestFraction(unittest.TestCase):
@@ -69,6 +70,23 @@ class TestFraction(unittest.TestCase):
 
         self.assertEqual(result.numerator, 15)
         self.assertEqual(result.denominator, 35)
+
+    @given(
+        numerator=st.integers(min_value=1, max_value=100000),
+        denominator=st.integers(min_value=1, max_value=100000)
+    )
+    def test_hypothesis_conversion(
+        self, numerator: int, denominator: int
+    ) -> None:
+        """Test mixed fraction conversion with generated values."""
+        fraction = Fraction(numerator, denominator)
+
+        whole, remainder, bottom = fraction.to_mixed()
+
+        self.assertEqual(whole * bottom + remainder, numerator)
+        self.assertGreaterEqual(remainder, 0)
+        self.assertLess(remainder, bottom)
+        self.assertEqual(bottom, denominator)
 
 
 if __name__ == "__main__":
