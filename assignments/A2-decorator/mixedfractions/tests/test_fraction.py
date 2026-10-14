@@ -88,6 +88,24 @@ class TestFraction(unittest.TestCase):
         self.assertLess(remainder, bottom)
         self.assertEqual(bottom, denominator)
 
+    @given(
+        a=st.integers(min_value=0, max_value=10000),
+        b=st.integers(min_value=1, max_value=10000),
+        c=st.integers(min_value=0, max_value=10000),
+        d=st.integers(min_value=1, max_value=10000)
+    )
+    def test_hypothesis_addition(
+        self, a: int, b: int, c: int, d: int
+    ) -> None:
+        """Test fraction addition with generated values."""
+        fraction1 = Fraction(a, b)
+        fraction2 = Fraction(c, d)
+
+        result = fraction1 + fraction2
+
+        self.assertEqual(result.numerator, a * d + c * b)
+        self.assertEqual(result.denominator, b * d)
+
 
 if __name__ == "__main__":
     unittest.main()
