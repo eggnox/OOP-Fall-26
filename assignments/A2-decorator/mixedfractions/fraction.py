@@ -6,5 +6,28 @@ class Fraction:
 
     def __init__(self, numerator: int, denominator: int) -> None:
         """Initialize a fraction."""
-        self._numerator: int = numerator
-        self._denominator: int = denominator
+        self.numerator = numerator
+        self.denominator = denominator
+
+    @property
+    def numerator(self) -> int:
+        """Get the numerator."""
+        return self._numerator
+
+    @numerator.setter
+    def numerator(self, value: int) -> None:
+        """Set the numerator."""
+        self._numerator = value
+
+    @property
+    def denominator(self) -> int:
+        """Get the denominator."""
+        return self._denominator
+
+    @denominator.setter
+    def denominator(self, value: int) -> None:
+        """Set the denominator and reject invalid values."""
+        if value <= 0:
+            raise ValueError("Denominator must be positive")
+
+        self._denominator = value
