@@ -38,3 +38,13 @@ class Fraction:
             self.numerator, self.denominator
         )
         return whole, remainder, self.denominator
+        
+    def __add__(self, other: "Fraction") -> "Fraction":
+        """Add two fractions together without simplifying."""
+        numerator = (
+            self.numerator * other.denominator
+            + other.numerator * self.denominator
+        )
+        denominator = self.denominator * other.denominator
+
+        return Fraction(numerator, denominator)
