@@ -14,3 +14,11 @@ class FractionManager:
             cls._instance = super().__new__(cls)
 
         return cls._instance
+        
+    def convert(self, numerator: int, denominator: int) -> str:
+        """Convert an improper fraction into a mixed fraction."""
+        fraction = Fraction(numerator, denominator)
+
+        whole, remainder, bottom = fraction.to_mixed()
+
+        return f"{whole} {remainder} / {bottom}"
