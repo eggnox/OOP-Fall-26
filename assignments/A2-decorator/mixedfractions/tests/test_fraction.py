@@ -22,7 +22,7 @@ class TestFraction(unittest.TestCase):
         """Test conversion with no remainder."""
         fraction = Fraction(10, 2)
         self.assertEqual(fraction.to_mixed(), (5, 0, 2))
-        
+
     def test_numerator_property(self) -> None:
         """Test reading and updating the numerator."""
         fraction = Fraction(10, 3)
@@ -48,6 +48,27 @@ class TestFraction(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             Fraction(10, -3)
+
+    def test_add_different_denominators(self) -> None:
+        """Test adding fractions with different denominators."""
+        result = Fraction(1, 2) + Fraction(1, 4)
+
+        self.assertEqual(result.numerator, 6)
+        self.assertEqual(result.denominator, 8)
+
+    def test_add_same_denominators(self) -> None:
+        """Test adding fractions with equal denominators."""
+        result = Fraction(2, 3) + Fraction(1, 3)
+
+        self.assertEqual(result.numerator, 9)
+        self.assertEqual(result.denominator, 9)
+
+    def test_add_zero_numerator(self) -> None:
+        """Test adding a fraction with a zero numerator."""
+        result = Fraction(0, 5) + Fraction(3, 7)
+
+        self.assertEqual(result.numerator, 15)
+        self.assertEqual(result.denominator, 35)
 
 
 if __name__ == "__main__":
