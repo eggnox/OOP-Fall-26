@@ -11,3 +11,4 @@ requests
 pdoc
 kattis-cli
 bandit
+rich

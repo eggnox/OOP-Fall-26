@@ -59,3 +59,31 @@ a2-docs:
 
 a2-program-test:
 	$(MAKE) -C $(A2_DIR) program-test
+
+
+# Assignment 3 - Weather App and Adapter Pattern
+
+A3_DIR = assignments/A3-adapter
+
+.PHONY: a3-test a3-style a3-typecheck a3-coverage a3-security a3-docs a3-program-test
+
+a3-test:
+	$(MAKE) -C $(A3_DIR) test
+
+a3-style:
+	$(MAKE) -C $(A3_DIR) style
+
+a3-typecheck:
+	$(MAKE) -C $(A3_DIR) typecheck
+
+a3-coverage:
+	$(MAKE) -C $(A3_DIR) coverage
+
+a3-security:
+	$(MAKE) -C $(A3_DIR) security
+
+a3-docs:
+	$(MAKE) -C $(A3_DIR) docs
+
+a3-program-test:
+	$(MAKE) -C $(A3_DIR) program-test
