@@ -1,10 +1,9 @@
-
 """Unit tests for WeatherClient using mocking and patching."""
 
 import io
 import json
 import unittest
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 from urllib.error import URLError
 from urllib.parse import parse_qs, urlsplit
 
@@ -44,7 +43,9 @@ class TestWeatherClient(unittest.TestCase):
                     WeatherClient(timeout=timeout)
 
     @patch("weather_client.urlopen")
-    def test_successful_request(self, mock_urlopen) -> None:
+    def test_successful_request(
+        self, mock_urlopen: MagicMock
+    ) -> None:
         """Test a successful mocked API response."""
         response = io.BytesIO(
             json.dumps(self.sample).encode("utf-8")
@@ -66,7 +67,9 @@ class TestWeatherClient(unittest.TestCase):
         )
 
     @patch("weather_client.urlopen")
-    def test_request_parameters(self, mock_urlopen) -> None:
+    def test_request_parameters(
+        self, mock_urlopen: MagicMock
+    ) -> None:
         """Verify URL parameters sent to the API."""
         response = io.BytesIO(
             json.dumps(self.sample).encode("utf-8")
@@ -88,7 +91,9 @@ class TestWeatherClient(unittest.TestCase):
         )
 
     @patch("weather_client.urlopen")
-    def test_network_error(self, mock_urlopen) -> None:
+    def test_network_error(
+        self, mock_urlopen: MagicMock
+    ) -> None:
         """Handle a failed network request."""
         mock_urlopen.side_effect = URLError("No connection")
 
@@ -98,7 +103,9 @@ class TestWeatherClient(unittest.TestCase):
             client.fetch_current("Denver", 39.7, -105.0)
 
     @patch("weather_client.urlopen")
-    def test_request_timeout(self, mock_urlopen) -> None:
+    def test_request_(
+        self, mock_urlopen: MagicMock
+    ) -> None:
         """Handle an API request timeout."""
         mock_urlopen.side_effect = TimeoutError("Timed out")
 
@@ -108,7 +115,9 @@ class TestWeatherClient(unittest.TestCase):
             client.fetch_current("Denver", 39.7, -105.0)
 
     @patch("weather_client.urlopen")
-    def test_invalid_json(self, mock_urlopen) -> None:
+    def test_invalid_json(
+        self, mock_urlopen: MagicMock
+    ) -> None:
         """Handle an invalid JSON response."""
         response = io.BytesIO(b"{invalid json")
         mock_urlopen.return_value.__enter__.return_value = response
@@ -119,7 +128,9 @@ class TestWeatherClient(unittest.TestCase):
             client.fetch_current("Denver", 39.7, -105.0)
 
     @patch("weather_client.urlopen")
-    def test_missing_weather_fields(self, mock_urlopen) -> None:
+    def test_missing_weather_fields(
+        self, mock_urlopen: MagicMock
+    ) -> None:
         """Check behavior when API fields are missing."""
         response = io.BytesIO(b'{"current": {}}')
         mock_urlopen.return_value.__enter__.return_value = response

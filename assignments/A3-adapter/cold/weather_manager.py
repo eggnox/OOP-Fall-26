@@ -15,8 +15,8 @@ class WeatherManager:
     _instance: ClassVar[WeatherManager | None] = None
 
     def __new__(
-    cls, client: WeatherClient | None = None
-) -> WeatherManager:
+        cls, client: WeatherClient | None = None
+    ) -> WeatherManager:
         """Create only one manager instance."""
         if cls._instance is None:
             cls._instance = super().__new__(cls)
