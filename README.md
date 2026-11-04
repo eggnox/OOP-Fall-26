@@ -50,3 +50,19 @@ Object-Oriented Programming course repository.
 | Testing | 24 unit tests passed, 4 local Kattis tests passed, and 100% code coverage achieved. |
 | Quality | Flake8, Mypy, Bandit, and GitHub Actions checks passed. |
 | UML | Class, sequence, and activity diagrams included in `docs/uml`. |
+
+
+### Assignment 3
+
+| Name | Value |
+| --- | --- |
+| Name | Advanced Unit Testing, Mocking, API & Adapter Pattern |
+| Problem | Cold-puter Science |
+| Description | Built a live Colorado weather application using the Open-Meteo API, Rich terminal interface, Adapter pattern, and Singleton manager. |
+| Status | Complete |
+| Location | [assignments/A3-adapter](assignments/A3-adapter) |
+| Kattis | Accepted |
+| Testing | 48 unit tests passed, 5 local Kattis tests passed, and 100% statement coverage achieved. |
+| Quality | Flake8, Mypy, Bandit, and GitHub Actions checks passed. |
+| UML | Class, sequence, and activity diagrams included in `cold/docs/uml`. |
+| Documentation | pdoc HTML documentation and testing screenshots included. |

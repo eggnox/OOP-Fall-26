@@ -1,0 +1,87 @@
+
+@startuml
+!pragma layout smetana
+
+title Assignment 3 - Weather App Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+top to bottom direction
+
+class WeatherReading {
+    - _city: str
+    - _temperature_c: float
+    - _feels_like_c: float
+    - _humidity_percent: int
+    - _wind_speed_kmh: float
+    - _condition: str
+    --
+    + __init__(city, temperature_c, feels_like_c, humidity_percent, wind_speed_kmh, condition): None
+    + city: str <<property>>
+    + temperature_c: float <<property>>
+    + feels_like_c: float <<property>>
+    + humidity_percent: int <<property>>
+    + wind_speed_kmh: float <<property>>
+    + condition: str <<property>>
+}
+
+class WeatherAdapter {
+    + {static} CONDITIONS: dict[int, str]
+    --
+    + {static} adapt(data: dict, city: str): WeatherReading
+}
+
+class WeatherClient {
+    + {static} API_URL: str
+    - _timeout: float
+    --
+    + __init__(timeout: float): None
+    + timeout: float <<property>>
+    + fetch_current(city: str, latitude: float, longitude: float): WeatherReading
+}
+
+class WeatherManager <<Singleton>> {
+    - {static} _instance: WeatherManager
+    - _client: WeatherClient
+    --
+    + __new__(client: WeatherClient): WeatherManager
+    + __init__(client: WeatherClient): None
+    + client: WeatherClient <<property>>
+    + get_weather(city: str, latitude: float, longitude: float): WeatherReading
+}
+
+class WeatherDashboard {
+    - _console: Console
+    --
+    + __init__(console: Console): None
+    + console: Console <<property>>
+    + show(weather: WeatherReading): None
+}
+
+class ColdCounter {
+    + {static} count(temperatures: list[int]): int
+}
+
+class "weather_app" as WeatherApp <<module>> {
+    + {static} CITY_COORDINATES: dict
+    --
+    + main(argv: list[str]): None
+}
+
+class "cold" as ColdProgram <<module>> {
+    + solve(data: str): str
+    + main(): None
+}
+
+WeatherManager --> WeatherClient : manages
+WeatherClient ..> WeatherAdapter : uses
+WeatherAdapter ..> WeatherReading : creates
+WeatherManager ..> WeatherReading : returns
+WeatherDashboard ..> WeatherReading : displays
+
+WeatherApp ..> WeatherManager : requests weather
+WeatherApp ..> WeatherDashboard : displays results
+
+ColdProgram ..> ColdCounter : counts temperatures
+
+@enduml

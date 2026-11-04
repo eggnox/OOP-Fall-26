@@ -1,0 +1,65 @@
+
+@startuml
+title Assignment 3 - Weather App Sequence Diagram
+
+autonumber
+
+actor User
+participant "weather_app.py" as App
+participant WeatherManager as Manager
+participant WeatherClient as Client
+participant "Open-Meteo API" as API
+participant WeatherAdapter as Adapter
+participant WeatherReading as Reading
+participant WeatherDashboard as Dashboard
+
+User -> App: Run weather_app.py --city denver
+activate App
+
+App -> App: Parse --city and find coordinates
+
+App -> Manager: WeatherManager()
+activate Manager
+Manager --> App: Singleton instance
+deactivate Manager
+
+App -> Manager: get_weather(city, latitude, longitude)
+activate Manager
+
+Manager -> Client: fetch_current(city, latitude, longitude)
+activate Client
+
+Client -> Client: Build HTTPS URL with parameters
+Client -> API: GET /v1/forecast
+activate API
+API --> Client: JSON weather response
+deactivate API
+
+Client -> Adapter: adapt(data, city)
+activate Adapter
+
+Adapter -> Reading: WeatherReading(...)
+activate Reading
+Reading --> Adapter: WeatherReading instance
+deactivate Reading
+
+Adapter --> Client: WeatherReading
+deactivate Adapter
+
+Client --> Manager: WeatherReading
+deactivate Client
+
+Manager --> App: WeatherReading
+deactivate Manager
+
+App -> Dashboard: WeatherDashboard()
+activate Dashboard
+
+App -> Dashboard: show(weather)
+Dashboard -> Dashboard: Create Rich table and panel
+Dashboard --> User: Display formatted weather
+deactivate Dashboard
+
+deactivate App
+
+@enduml

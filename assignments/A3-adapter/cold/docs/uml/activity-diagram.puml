@@ -1,0 +1,41 @@
+
+@startuml
+title Assignment 3 - Weather App Activity Diagram
+
+start
+
+:Launch weather_app.py;
+
+:Parse command-line arguments;
+
+:Select Colorado city;
+
+:Look up city coordinates;
+
+:Create or retrieve WeatherManager Singleton;
+
+:Call get_weather();
+
+:Build Open-Meteo API request;
+
+:Send HTTPS request;
+
+if (API request succeeds?) then (Yes)
+    :Read JSON response;
+    :WeatherAdapter converts API data;
+
+    if (Weather data is valid?) then (Yes)
+        :Create WeatherReading object;
+        :Create Rich WeatherDashboard;
+        :Build weather table and panel;
+        :Display current weather;
+    else (No)
+        :Raise data conversion error;
+    endif
+
+else (No)
+    :Raise weather request error;
+endif
+
+stop
+@enduml
