@@ -43,5 +43,5 @@ def main(argv: list[str] | None = None) -> None:
     dashboard.show(weather)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()
