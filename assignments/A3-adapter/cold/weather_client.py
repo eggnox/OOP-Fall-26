@@ -50,8 +50,13 @@ class WeatherClient:
         url = f"{self.API_URL}?{urlencode(parameters)}"
 
         try:
-            with urlopen(url, timeout=self._timeout) as response:
+            # The URL uses our fixed, trusted Open-Meteo HTTPS endpoint.
+            # Only encoded query parameters vary.
+            with urlopen(  # nosec B310
+                url, timeout=self._timeout
+            ) as response:
                 data: dict[str, Any] = json.load(response)
+
         except (URLError, TimeoutError, json.JSONDecodeError) as error:
             raise RuntimeError(
                 "Unable to retrieve weather data"
