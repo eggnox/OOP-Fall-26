@@ -1,0 +1,70 @@
+
+@startuml
+!pragma layout smetana
+
+title Assignment 4 - Statistics Class Diagram
+
+skinparam classAttributeIconSize 0
+
+abstract class Kattis {
+    # _input_source: Any
+    # _data: Any
+    # _answer: Any
+    {abstract} + read_input(): None
+    {abstract} + data: Any
+    {abstract} + answer: Any
+    {abstract} + solve(): None
+    {abstract} + print_answer(): None
+}
+
+abstract class StatisticsTemplate {
+    # _output: TextIO
+    + __init__(data_source: TextIO, output: TextIO)
+    + run(): None
+}
+
+class StatisticsSolution {
+    # _data: list[StatisticsValues]
+    # _answer: list[str]
+    + read_input(): None
+    + data: list[StatisticsValues]
+    + answer: list[str]
+    + solve(): None
+    + print_answer(): None
+}
+
+class "list[int]" as IntegerList
+
+class StatisticsValues {
+    + __init__(values: Iterable[int])
+    + minimum: int
+    + maximum: int
+    + spread: int
+}
+
+class "statistics_main" as StatisticsMain {
+    + main(): None
+}
+
+Kattis <|-- StatisticsTemplate
+StatisticsTemplate <|-- StatisticsSolution
+IntegerList <|-- StatisticsValues
+
+StatisticsSolution --> StatisticsValues : creates
+StatisticsMain ..> StatisticsSolution : uses
+
+note right of StatisticsTemplate
+  Template Method Pattern
+
+  run() defines the fixed order:
+  1. read_input()
+  2. solve()
+  3. print_answer()
+end note
+
+note right of StatisticsValues
+  Inherits from Python list
+  and adds statistical properties
+end note
+
+@enduml
