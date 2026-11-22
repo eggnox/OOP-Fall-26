@@ -87,3 +87,35 @@ a3-docs:
 
 a3-program-test:
 	$(MAKE) -C $(A3_DIR) program-test
+
+
+# Assignment 4 - Statistics / Template Method
+
+A4_DIR = assignments/A4-template
+
+.PHONY: a4-all a4-test a4-style a4-typecheck \
+        a4-coverage a4-security a4-program-test a4-docs
+
+a4-all:
+	$(MAKE) -C $(A4_DIR) all
+
+a4-test:
+	$(MAKE) -C $(A4_DIR) test
+
+a4-style:
+	$(MAKE) -C $(A4_DIR) style
+
+a4-typecheck:
+	$(MAKE) -C $(A4_DIR) typecheck
+
+a4-coverage:
+	$(MAKE) -C $(A4_DIR) coverage
+
+a4-security:
+	$(MAKE) -C $(A4_DIR) security
+
+a4-program-test:
+	$(MAKE) -C $(A4_DIR) program-test
+
+a4-docs:
+	$(MAKE) -C $(A4_DIR) docs

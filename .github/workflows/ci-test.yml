@@ -72,3 +72,22 @@ jobs:
       - name: Check Assignment 3 security
         run: make a3-security
 
+
+      - name: Check Assignment 4 style
+        run: make a4-style
+
+      - name: Check Assignment 4 types
+        run: make a4-typecheck
+
+      - name: Run Assignment 4 unit tests
+        run: make a4-test
+
+      - name: Check Assignment 4 coverage
+        run: make a4-coverage
+
+      - name: Check Assignment 4 security
+        run: make a4-security
+
+      - name: Run Assignment 4 whole-program tests
+        run: make a4-program-test
+
