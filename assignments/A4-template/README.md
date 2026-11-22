@@ -144,4 +144,4 @@ Testing screenshots will be saved in the `screenshots/` directory.
 
 The object-oriented implementation, unit testing, coverage, UML diagrams, and CI/CD integration are complete.
 
-The official Kattis submission and final GitHub release are pending.
+The Statistics solution was officially Accepted by Kattis, passing all 51 test cases with a runtime of 0.06 seconds. All local tests, UML diagrams, and CI/CD checks are complete. Final GitHub merge, tag, and release are pending.
