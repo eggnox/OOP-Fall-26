@@ -1,0 +1,58 @@
+
+@startuml
+
+title Assignment 4 - Statistics Activity Diagram
+
+start
+
+:Start statistics_main.py;
+:Create StatisticsSolution object;
+:Call StatisticsTemplate.run();
+
+partition "1. read_input()" {
+    while (More input lines?) is (Yes)
+        :Read next line;
+
+        if (Line is blank?) then (Yes)
+            :Skip empty line;
+        else (No)
+            :Convert input to integers;
+            :Read count and values;
+
+            if (Valid count and number of values?) then (Yes)
+                :Create StatisticsValues object;
+                :Store test case;
+            else (No)
+                :Raise ValueError;
+                stop
+            endif
+        endif
+    endwhile (No)
+}
+
+partition "2. solve()" {
+    :Initialize answer list;
+    :Set case number to 1;
+
+    while (More test cases?) is (Yes)
+        :Get minimum value;
+        :Get maximum value;
+        :Calculate range = maximum - minimum;
+        :Format Case N: min max range;
+        :Add formatted result to answers;
+        :Increment case number;
+    endwhile (No)
+}
+
+partition "3. print_answer()" {
+    if (Answers available?) then (Yes)
+        :Write answers to stdout;
+    else (No)
+        :Produce no output;
+    endif
+}
+
+:Finish Template Method;
+stop
+
+@enduml

@@ -66,3 +66,19 @@ Object-Oriented Programming course repository.
 | Quality | Flake8, Mypy, Bandit, and GitHub Actions checks passed. |
 | UML | Class, sequence, and activity diagrams included in `cold/docs/uml`. |
 | Documentation | pdoc HTML documentation and testing screenshots included. |
+
+
+### Assignment 4
+
+| Name | Value |
+| --- | --- |
+| Name | Template Method Pattern, Inheritance & Abstract Base Classes |
+| Problem | Statistics |
+| Description | Solved Kattis Statistics using the Template Method design pattern, inheritance from Python's built-in list class, and the professor-provided Kattis abstract base class. |
+| Status | Implementation complete; final merge and release pending |
+| Location | [assignments/A4-template](assignments/A4-template) |
+| Kattis | Accepted — 51/51 test cases, 0.06-second runtime |
+| Testing | 22 automated tests passed, 3 whole-program tests passed, and 100% statement coverage achieved. |
+| Quality | Flake8, Mypy, Bandit, and GitHub Actions checks passed. |
+| UML | Class, sequence, and activity diagrams included in `statistics/docs/uml`. |
+| Documentation | pdoc HTML documentation and testing screenshots included. |

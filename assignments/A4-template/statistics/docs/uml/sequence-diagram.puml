@@ -1,0 +1,63 @@
+
+@startuml
+
+title Assignment 4 - Statistics Sequence Diagram
+
+autonumber
+
+actor "Kattis Judge" as Judge
+participant "statistics_main.py" as Main
+participant "StatisticsSolution" as Solution
+participant "StatisticsValues" as Values
+participant "stdin" as Input
+participant "stdout" as Output
+
+Judge -> Main: Execute program
+activate Main
+
+Main -> Solution: StatisticsSolution(stdin, stdout)
+activate Solution
+
+note right of Solution
+  Inherits StatisticsTemplate.run()
+  and the professor's Kattis ABC
+end note
+
+Main -> Solution: run()
+
+group Template Method Pattern
+    Solution -> Solution: read_input()
+
+    loop For each input case
+        Solution -> Input: Read next line
+        Input --> Solution: Count and integers
+        Solution -> Values: StatisticsValues(integers)
+        Values --> Solution: Parsed values
+    end
+
+    Solution -> Solution: solve()
+
+    loop For each test case
+        Solution -> Values: minimum
+        Values --> Solution: Minimum value
+
+        Solution -> Values: maximum
+        Values --> Solution: Maximum value
+
+        Solution -> Values: spread
+        Values --> Solution: Maximum - minimum
+
+        Solution -> Solution: Format "Case N: min max range"
+    end
+
+    Solution -> Solution: print_answer()
+    Solution -> Output: Write formatted answers
+end
+
+Output --> Judge: Case 1: 4 10 6
+
+Solution --> Main: Complete
+deactivate Solution
+deactivate Main
+
+@enduml
